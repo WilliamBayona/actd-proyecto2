@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/ASUS/Desktop/actd-proyecto2/mlruns/578652208799529854/3eb08f1f3f214562b8ec4c75f940ec52/artifacts
+end_time: 1748193737344
+entry_point_name: ''
+experiment_id: '578652208799529854'
+lifecycle_stage: active
+run_id: 3eb08f1f3f214562b8ec4c75f940ec52
+run_name: placid-lynx-490
+run_uuid: 3eb08f1f3f214562b8ec4c75f940ec52
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748193717699
+status: 4
+tags: []
+user_id: ASUS

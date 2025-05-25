@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/ASUS/Desktop/actd-proyecto2/mlruns/512560687835899326/8a8f2e814a7b41e08dafa59c0a05fd79/artifacts
+end_time: 1748194904294
+entry_point_name: ''
+experiment_id: '512560687835899326'
+lifecycle_stage: active
+run_id: 8a8f2e814a7b41e08dafa59c0a05fd79
+run_name: big-doe-915
+run_uuid: 8a8f2e814a7b41e08dafa59c0a05fd79
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748194387274
+status: 3
+tags: []
+user_id: ASUS
