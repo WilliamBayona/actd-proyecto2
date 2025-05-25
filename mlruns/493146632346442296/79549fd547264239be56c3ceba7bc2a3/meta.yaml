@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/ASUS/Desktop/actd-proyecto2/mlruns/493146632346442296/79549fd547264239be56c3ceba7bc2a3/artifacts
+end_time: 1748146263763
+entry_point_name: ''
+experiment_id: '493146632346442296'
+lifecycle_stage: active
+run_id: 79549fd547264239be56c3ceba7bc2a3
+run_name: blushing-ant-104
+run_uuid: 79549fd547264239be56c3ceba7bc2a3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748145860195
+status: 3
+tags: []
+user_id: ASUS

@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/ASUS/Desktop/actd-proyecto2/mlruns/386733509971769094/a1c2e5c0d8a64c7dbd0f62a6f7b9ac4d/artifacts
+end_time: 1748149274098
+entry_point_name: ''
+experiment_id: '386733509971769094'
+lifecycle_stage: active
+run_id: a1c2e5c0d8a64c7dbd0f62a6f7b9ac4d
+run_name: masked-hen-159
+run_uuid: a1c2e5c0d8a64c7dbd0f62a6f7b9ac4d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748148828045
+status: 3
+tags: []
+user_id: ASUS

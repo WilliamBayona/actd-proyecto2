@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/ASUS/Desktop/actd-proyecto2/mlruns/512560687835899326/c381077407324399a3b32de79078c41c/artifacts
+end_time: 1748196065509
+entry_point_name: ''
+experiment_id: '512560687835899326'
+lifecycle_stage: active
+run_id: c381077407324399a3b32de79078c41c
+run_name: rambunctious-cub-999
+run_uuid: c381077407324399a3b32de79078c41c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748195902210
+status: 3
+tags: []
+user_id: ASUS

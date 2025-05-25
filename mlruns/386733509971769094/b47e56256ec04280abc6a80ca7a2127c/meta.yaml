@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/ASUS/Desktop/actd-proyecto2/mlruns/386733509971769094/b47e56256ec04280abc6a80ca7a2127c/artifacts
+end_time: 1748148041359
+entry_point_name: ''
+experiment_id: '386733509971769094'
+lifecycle_stage: active
+run_id: b47e56256ec04280abc6a80ca7a2127c
+run_name: suave-stoat-669
+run_uuid: b47e56256ec04280abc6a80ca7a2127c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748147527464
+status: 3
+tags: []
+user_id: ASUS
