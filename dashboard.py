@@ -10,8 +10,8 @@ AZUL_ICFES = "#036BB4"
 VERDE_ICFES = "#A0D068"
 
 # Cargar modelo y scaler
-modelo = load_model("mejor_modelo_f2.h5")
-scaler = joblib.load("scaler.pkl")
+modelo = load_model("mejor_modelo_balanceado.h5")
+scaler = joblib.load("scaler_balanceado.pkl")
 
 # Cargar datos
 df = pd.read_csv("data2016_P1_limpio.csv")
