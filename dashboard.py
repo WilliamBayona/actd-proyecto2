@@ -8,6 +8,8 @@ import joblib
 # Colores personalizados
 AZUL_ICFES = "#036BB4"
 VERDE_ICFES = "#A0D068"
+# Fuente global
+FUENTE_NUNITO = "'Nunito', sans-serif"
 
 # Cargar modelo y scaler
 modelo = load_model("mejor_modelo_balanceado.h5")
@@ -20,6 +22,33 @@ df_top10 = pd.read_csv("promedios_por_colegio.csv")
 # App
 app = Dash(__name__, suppress_callback_exceptions=True)
 app.title = "ICFES Dashboard"
+
+# Añadir hoja de estilo externa para Nunito
+app.index_string = '''
+<!DOCTYPE html>
+<html>
+    <head>
+        {%metas%}
+        <title>{%title%}</title>
+        {%favicon%}
+        {%css%}
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+        <style>
+            * {
+                font-family: 'Nunito', sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        {%app_entry%}
+        <footer>
+            {%config%}
+            {%scripts%}
+            {%renderer%}
+        </footer>
+    </body>
+</html>
+'''
 
 # Barra superior reutilizable
 def barra_superior():
