@@ -124,6 +124,7 @@ def estilo_dropdown():
 
 layout_predictor = html.Div([
     barra_superior(),
+
     html.Div("Predictor de Peor Área", style={
         'width': '560px', 'height': '33px', 'margin': 'auto', 'marginTop': '50px',
         'textAlign': 'center', 'color': AZUL_ICFES, 'fontSize': '36px',
@@ -131,6 +132,7 @@ layout_predictor = html.Div([
     }),
 
     html.Div([
+
         html.Div("Género", style=estilo_label()),
         dcc.Dropdown(id='genero', options=[
             {'label': 'Femenino', 'value': 0},
@@ -148,23 +150,9 @@ layout_predictor = html.Div([
             {'label': 'No sabe', 'value': 6}
         ], style=estilo_dropdown()),
 
-        html.Div("Educación Padre", style=estilo_label()),
-        dcc.Dropdown(id='educacion_padre', options=[
-            {'label': 'Primaria incompleta', 'value': 0},
-            {'label': 'Primaria completa', 'value': 1},
-            {'label': 'Secundaria completa', 'value': 2},
-            {'label': 'Técnica/tecnológica incompleta', 'value': 3},
-            {'label': 'Técnica/tecnológica completa', 'value': 4},
-            {'label': 'Profesional completa', 'value': 5},
-            {'label': 'No sabe', 'value': 6}
-        ], style=estilo_dropdown()),
-
         html.Div("Estrato Vivienda", style=estilo_label()),
         dcc.Dropdown(id='estrato', options=[{'label': str(i), 'value': i} for i in range(1, 7)],
                      style=estilo_dropdown()),
-
-        html.Div("Personas Hogar", style=estilo_label()),
-        dcc.Input(id='personas', type='number', value=1, style=estilo_dropdown()),
 
         html.Div("Cuartos Hogar", style=estilo_label()),
         dcc.Input(id='cuartos', type='number', value=1, style=estilo_dropdown()),
@@ -175,23 +163,12 @@ layout_predictor = html.Div([
             {'label': 'No', 'value': 0}
         ], style=estilo_dropdown()),
 
-        html.Div("Computador (sí/no)", style=estilo_label()),
-        dcc.Dropdown(id='pc', options=[
-            {'label': 'Sí', 'value': 1},
-            {'label': 'No', 'value': 0}
-        ], style=estilo_dropdown()),
-
         html.Div("Internet (sí/no)", style=estilo_label()),
         dcc.Dropdown(id='internet', options=[
             {'label': 'Sí', 'value': 1},
             {'label': 'No', 'value': 0}
         ], style=estilo_dropdown()),
 
-        html.Div("Lavadora (sí/no)", style=estilo_label()),
-        dcc.Dropdown(id='lavadora', options=[
-            {'label': 'Sí', 'value': 1},
-            {'label': 'No', 'value': 0}
-        ], style=estilo_dropdown())
     ], style={
         'width': '80%', 'margin': 'auto', 'display': 'grid',
         'gridTemplateColumns': '1fr 1fr', 'gap': '10px', 'marginTop': '40px'
@@ -211,6 +188,7 @@ layout_predictor = html.Div([
         'flexDirection': 'column', 'alignItems': 'flex-end', 'marginRight': '5%'
     })
 ])
+
 
 # --- Callback corregido ---
 
@@ -259,13 +237,48 @@ layout_visualizador = html.Div([
             )
         )
     ], style={'padding': '40px'}),
+
+    html.H3("Características en común", style={"textAlign": "left", "color": AZUL_ICFES, "marginTop": "40px"}),
+
     html.Div([
-        dcc.Graph(figure=px.box(df_top10, x='cole_naturaleza', y='Promedio_Puntaje_Global',
-                                title='Puntajes por Naturaleza', color_discrete_sequence=[AZUL_ICFES])),
-        dcc.Graph(figure=px.box(df_top10, x='cole_area_ubicacion', y='Promedio_Puntaje_Global',
-                                title='Puntajes por Ubicación', color_discrete_sequence=[AZUL_ICFES]))
-    ], style={'display': 'flex'})
+        dcc.Dropdown(
+            id='filtro_variable',
+            options=[
+                {'label': 'Bilingüe', 'value': 'cole_bilingue'},
+                {'label': 'Calendario', 'value': 'cole_calendario'},
+                {'label': 'Carácter', 'value': 'cole_caracter'},
+                {'label': 'Género', 'value': 'cole_genero'},
+                {'label': 'Jornada', 'value': 'cole_jornada'},
+                {'label': 'Naturaleza', 'value': 'cole_naturaleza'},
+                {'label': 'Ubicación (Rural/Urbana)', 'value': 'cole_area_ubicacion'},
+                {'label': 'Departamento', 'value': 'cole_depto_ubicacion'}
+            ],
+            placeholder="Seleccione una característica",
+            style={'width': '50%', 'margin': 'auto'}
+        )
+    ], style={'marginTop': '30px'}),
+
+    html.Div([
+        dcc.Graph(id='grafico_caracteristicas')
+    ], style={'marginTop': '40px'})
 ])
+
+@app.callback(
+    Output('grafico_caracteristicas', 'figure'),
+    Input('filtro_variable', 'value')
+)
+def actualizar_grafico(variable):
+    if not variable:
+        return px.bar(title="Seleccione una característica para visualizar")
+
+    df_filtrado = df_top10[df_top10["Promedio_Puntaje_Global"] <= df_top10["Promedio_Puntaje_Global"].quantile(0.25)]
+
+    conteo = df_filtrado[variable].value_counts().reset_index()
+    conteo.columns = [variable, 'Cantidad']
+
+    return px.bar(conteo, x=variable, y='Cantidad',
+                  title=f"Distribución de colegios con bajo desempeño por: {variable.replace('cole_', '').replace('_', ' ').capitalize()}",
+                  color_discrete_sequence=[AZUL_ICFES])
 
 # Navegación
 app.layout = html.Div([
