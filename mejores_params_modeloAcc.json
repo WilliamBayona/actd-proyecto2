@@ -1,11 +1,10 @@
 {
-    "n_layers": 4,
+    "n_layers": 3,
     "activation": "tanh",
-    "dropout": 0.23937376534248514,
-    "lr": 0.0016760748339264,
+    "dropout": 0.4908827755319729,
+    "lr": 0.000884929898545988,
     "batch_size": 64,
-    "n_units_0": 120,
-    "n_units_1": 95,
-    "n_units_2": 63,
-    "n_units_3": 97
+    "n_units_0": 124,
+    "n_units_1": 105,
+    "n_units_2": 74
 }
