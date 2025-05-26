@@ -197,22 +197,19 @@ layout_predictor = html.Div([
     Input('btn-predictor', 'n_clicks'),
     State('genero', 'value'),
     State('educacion_madre', 'value'),
-    State('educacion_padre', 'value'),
     State('estrato', 'value'),
-    State('personas', 'value'),
     State('cuartos', 'value'),
     State('auto', 'value'),
-    State('pc', 'value'),
-    State('internet', 'value'),
-    State('lavadora', 'value')
+    State('internet', 'value')
 )
-def predecir(n, g, edum, edup, e, p, c, a, pc, internet, lav):
-    if n > 0 and all(x is not None for x in [g, edum, edup, e, p, c, a, pc, internet, lav]):
-        entrada = scaler.transform([[g, edum, edup, e, p, c, a, pc, internet, lav]])
+def predecir(n, g, edum, e, c, a, internet):
+    if n > 0 and all(x is not None for x in [g, edum, e, c, a, internet]):
+        entrada = scaler.transform([[g, edum, e, c, a, internet]])
         pred = modelo.predict(entrada)
         areas = ['Matemáticas', 'Lectura crítica', 'Inglés', 'Ciencias naturales', 'Sociales']
         return f"La peor Área es :\n{areas[np.argmax(pred)]}"
     return "Por favor complete todos los campos."
+
 
 
 
